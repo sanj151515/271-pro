@@ -1,0 +1,270 @@
+{UTF-8}
+Estimacion de ventas VN= INTEG (
+	IF THEN ELSE( VisualNovels>1 , 0 , publico fidelizado*porcentaje publico comprador-Estimacion de ventas VN\
+		),
+		0)
+	~	unidades
+	~		|
+
+presupuesto NL=
+	MIN(porcentaje dolares x publico fidelizado NL*publico fidelizado, maximo presupuesto NL\
+		)
+	~	dolares
+	~		|
+
+desarrollar juego=
+	TEAM de desarrollo VN/personas minimas VN
+	~	personas
+	~		|
+
+publico inicial=
+	100
+	~	
+	~		|
+
+publico fidelizado=
+	publico inicial+VisualNovels*tasa fidelizacion VN + Novelas Ligeras*tasa fidelizacion NL
+	~	personas
+	~		|
+
+maximo presupuesto NL=
+	75
+	~	
+	~		|
+
+cant de escritores x editor=
+	2
+	~	personas
+	~		|
+
+editores de NL=
+	presupuesto NL/salario editores NL
+	~	personas
+	~		|
+
+escribir obra=
+	escritores de NL
+	~	personas/Month
+	~		|
+
+escritores de NL=
+	editores de NL * cant de escritores x editor
+	~	personas*personas
+	~		|
+
+Ganancia VN 1=
+	IF THEN ELSE(VisualNovels>1,ventas reales VN 1-Estimacion de ventas VN, 0)
+	~	
+	~		|
+
+Novelas Ligeras= INTEG (
+	INTEGER(escribir obra),
+		1)
+	~	novels
+	~		|
+
+personas minimas VN=
+	12
+	~	personas
+	~		|
+
+porcentaje dolares x publico fidelizado NL=
+	0.1
+	~	
+	~		|
+
+porcentaje dolares x publico fidelizado VN=
+	0.4
+	~	
+	~		|
+
+porcentaje en dolares x ganancia VN=
+	1
+	~	dolares
+	~		|
+
+porcentaje publico comprador=
+	0.06
+	~	
+	~		|
+
+presupuesto VN=
+	MAX(0, Estimacion de ventas VN*porcentaje dolares x publico fidelizado VN+Ganancia VN 1\
+		*porcentaje en dolares x ganancia VN )
+	~	dolares
+	~		|
+
+productores de VN=
+	presupuesto VN/salario productores VN
+	~	personas
+	~		|
+
+salario editores NL=
+	30
+	~	dolares/personas
+	~		|
+
+salario productores VN=
+	20
+	~	dolares/personas
+	~		|
+
+salario TEAM VN=
+	15
+	~	dolares/personas
+	~		|
+
+tasa fidelizacion NL=
+	50
+	~	personas/novels
+	~		|
+
+tasa fidelizacion VN=
+	20
+	~	personas/games
+	~		|
+
+TEAM de desarrollo VN=
+	(presupuesto VN/salario TEAM VN) + productores de VN
+	~	personas*personas
+	~		|
+
+ventas reales VN 1=
+	50
+	~	
+	~		|
+
+VisualNovels= INTEG (
+	desarrollar juego,
+		0)
+	~	games
+	~		|
+
+********************************************************
+	.Control
+********************************************************~
+		Simulation Control Parameters
+	|
+
+FINAL TIME  = 12
+	~	Month
+	~	The final time for the simulation.
+	|
+
+INITIAL TIME  = 0
+	~	Month
+	~	The initial time for the simulation.
+	|
+
+SAVEPER  = 
+        TIME STEP
+	~	Month [0,?]
+	~	The frequency with which output is stored.
+	|
+
+TIME STEP  = 1
+	~	Month [0,?]
+	~	The time step for the simulation.
+	|
+
+\\\---/// Sketch information - do not modify anything except names
+V300  Do not put anything below this section - it will be ignored
+*View 1
+$192-192-192,0,Times New Roman|12||0-0-0|0-0-0|0-0-255|-1--1--1|255-255-255|96,96,100,0
+10,1,escritores de NL,253,57,53,11,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+10,2,editores de NL,245,212,48,11,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+1,3,2,1,1,0,43,0,2,64,0,-1--1--1,|12||0-0-0,1|(236,125)|
+10,4,productores de VN,948,216,49,19,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+10,5,Estimacion de ventas VN,540,256,45,19,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+1,6,5,7,1,0,43,0,2,64,0,-1--1--1,|12||0-0-0,1|(699,300)|
+10,7,presupuesto VN,803,313,52,11,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+1,8,7,4,1,0,43,0,2,64,0,-1--1--1,|12||0-0-0,1|(884,280)|
+10,9,presupuesto NL,424,248,51,11,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+1,10,9,2,1,0,43,0,2,64,0,-1--1--1,|12||0-0-0,1|(324,259)|
+10,11,TEAM de desarrollo VN,911,77,48,19,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+1,12,4,11,1,0,43,0,2,64,0,-1--1--1,|12||0-0-0,1|(951,148)|
+10,13,ventas reales VN 1,464,405,41,19,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+10,14,Ganancia VN 1,591,353,52,11,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+1,15,5,14,0,0,45,0,2,64,0,-1--1--1,|12||0-0-0,1|(563,301)|
+1,16,13,14,0,0,43,0,2,64,0,-1--1--1,|12||0-0-0,1|(528,379)|
+1,17,14,7,0,0,43,0,2,64,0,-1--1--1,|12||0-0-0,1|(692,336)|
+10,18,Novelas Ligeras,455,60,40,20,3,3,0,0,0,0,0,0,0,0,0,0,0,0
+10,19,VisualNovels,667,65,40,20,3,3,0,0,0,0,0,0,0,0,0,0,0,0
+10,20,publico fidelizado,556,161,40,20,3,3,0,0,0,0,0,0,0,0,0,0,0,0
+1,21,18,20,1,0,0,0,0,64,0,-1--1--1,,1|(516,85)|
+1,22,19,20,1,0,0,0,0,64,0,-1--1--1,,1|(599,97)|
+1,23,20,9,0,0,0,0,0,64,0,-1--1--1,,1|(487,204)|
+1,24,20,5,0,0,0,0,0,64,0,-1--1--1,,1|(549,201)|
+1,25,26,18,4,0,0,22,0,0,0,-1--1--1,,1|(385,57)|
+11,26,266,347,57,8,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,27,escribir obra,347,76,40,11,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,28,29,19,4,0,0,22,0,0,0,-1--1--1,,1|(741,65)|
+11,29,684,784,65,8,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,30,desarrollar juego,784,84,53,11,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,31,tasa fidelizacion NL,444,132,52,19,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+10,32,tasa fidelizacion VN,671,125,52,19,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+1,33,31,20,0,0,0,0,0,64,0,-1--1--1,,1|(500,145)|
+1,34,32,20,0,0,0,0,0,64,0,-1--1--1,,1|(616,144)|
+10,35,porcentaje publico comprador,704,185,59,19,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+1,36,35,5,0,0,0,0,0,64,0,-1--1--1,,1|(627,216)|
+10,37,porcentaje dolares x publico fidelizado NL,364,181,69,19,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+1,38,37,9,0,0,0,0,0,64,0,-1--1--1,,1|(392,212)|
+10,39,salario editores NL,203,308,48,19,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+1,40,39,2,1,0,0,0,0,64,0,-1--1--1,,1|(212,252)|
+10,41,cant de escritores x editor,156,133,56,19,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+1,42,41,1,1,0,0,0,0,64,0,-1--1--1,,1|(172,80)|
+1,43,1,27,0,0,0,0,0,64,0,-1--1--1,,1|(299,68)|
+10,44,porcentaje dolares x publico fidelizado VN,776,252,72,19,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+1,45,44,7,0,0,0,0,0,64,0,-1--1--1,,1|(788,279)|
+10,46,porcentaje en dolares x ganancia VN,771,405,69,19,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+1,47,46,7,0,0,0,0,0,64,0,-1--1--1,,1|(785,361)|
+10,48,salario productores VN,976,329,53,19,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+1,49,48,4,1,0,0,0,0,64,0,-1--1--1,,1|(967,277)|
+10,50,salario TEAM VN,1020,141,59,11,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+1,51,50,11,1,0,0,0,0,64,0,-1--1--1,,1|(984,109)|
+1,52,7,11,1,0,0,0,0,64,0,-1--1--1,,1|(887,200)|
+1,53,11,30,0,0,0,0,0,64,0,-1--1--1,,1|(856,79)|
+10,54,personas minimas VN,775,24,56,19,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+1,55,54,30,0,0,0,0,0,64,0,-1--1--1,,1|(780,51)|
+1,56,19,14,1,0,0,0,0,64,0,-1--1--1,,1|(853,228)|
+10,57,publico inicial,564,37,43,11,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+1,58,57,20,0,0,0,0,0,64,0,-1--1--1,,1|(559,87)|
+10,59,maximo presupuesto NL,396,325,52,19,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+1,60,59,9,0,0,0,0,0,64,0,-1--1--1,,1|(407,288)|
+1,61,19,5,1,0,0,0,0,64,0,-1--1--1,,1|(740,185)|
+///---\\\
+:L<%^E!@
+1:Current.vdfx
+4:Time
+5:VisualNovels
+9:Current
+19:100,0
+24:0
+25:12
+26:12
+23:0
+15:0,0,0,0,0,0
+27:0,
+34:0,
+42:1
+72:0
+73:0
+35:Date
+36:YYYY-MM-DD
+37:2000
+38:1
+39:1
+40:2
+41:0
+95:0
+96:0
+77:0
+78:0
+93:0
+94:0
+92:0
+91:0
+90:0
+87:0
+75:
+43:

@@ -1,0 +1,145 @@
+{UTF-8}
+editores de NL  = A FUNCTION OF( presupuesto NL)
+	~	
+	~		|
+
+escritores de NL  = A FUNCTION OF( editores de NL)
+	~	
+	~		|
+
+Estimacion de ventas VN  = A FUNCTION OF( publico fidelizado)
+	~	
+	~		|
+
+Ganancia  = A FUNCTION OF( Estimacion de ventas VN,ventas reales VN)
+	~	
+	~		|
+
+Novelas Ligeras  = A FUNCTION OF( escritores de NL)
+	~	
+	~		|
+
+presupuesto NL  = A FUNCTION OF( publico fidelizado)
+	~	
+	~		|
+
+presupuesto VN  = A FUNCTION OF( Estimacion de ventas VN,Ganancia)
+	~	
+	~		|
+
+productores de VN  = A FUNCTION OF( presupuesto VN)
+	~	
+	~		|
+
+publico fidelizado  = A FUNCTION OF( Novelas Ligeras,Visual Novels)
+	~	
+	~		|
+
+TEAM de desarrollo VN  = A FUNCTION OF( productores de VN)
+	~	
+	~		|
+
+ventas reales VN  = A FUNCTION OF( )
+	~	
+	~		|
+
+Visual Novels  = A FUNCTION OF( Novelas Ligeras,TEAM de desarrollo VN)
+	~	
+	~		|
+
+********************************************************
+	.Control
+********************************************************~
+		Simulation Control Parameters
+	|
+
+FINAL TIME  = 100
+	~	Month
+	~	The final time for the simulation.
+	|
+
+INITIAL TIME  = 0
+	~	Month
+	~	The initial time for the simulation.
+	|
+
+SAVEPER  = 
+        TIME STEP
+	~	Month [0,?]
+	~	The frequency with which output is stored.
+	|
+
+TIME STEP  = 1
+	~	Month [0,?]
+	~	The time step for the simulation.
+	|
+
+\\\---/// Sketch information - do not modify anything except names
+V300  Do not put anything below this section - it will be ignored
+*View 1
+$192-192-192,0,Times New Roman|12||0-0-0|0-0-0|0-0-255|-1--1--1|255-255-255|96,96,130,0
+10,1,Novelas Ligeras,320,53,51,11,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+10,2,escritores de NL,167,52,53,11,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+10,3,editores de NL,137,147,48,11,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+1,4,3,2,1,0,43,0,2,64,0,-1--1--1,|12||0-0-0,1|(141,71)|
+1,5,2,1,1,0,43,0,2,64,0,-1--1--1,|12||0-0-0,1|(244,32)|
+10,6,Visual Novels,468,55,44,11,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+10,7,productores de VN,655,148,49,19,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+1,8,1,6,0,0,43,0,2,64,0,-1--1--1,|12||0-0-0,1|(392,53)|
+10,9,publico fidelizado,376,147,55,11,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+1,10,1,9,1,0,43,0,2,64,0,-1--1--1,|12||0-0-0,1|(352,91)|
+1,11,6,9,1,0,43,0,2,64,0,-1--1--1,|12||0-0-0,1|(420,92)|
+10,12,Estimacion de ventas VN,432,224,45,19,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+1,13,9,12,1,0,43,0,2,64,0,-1--1--1,|12||0-0-0,1|(393,176)|
+1,14,9,18,1,0,43,0,2,64,0,-1--1--1,|12||0-0-0,1|(307,208)|
+1,15,12,16,1,0,43,0,2,64,0,-1--1--1,|12||0-0-0,1|(517,231)|
+10,16,presupuesto VN,573,232,52,11,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+1,17,16,7,1,0,43,0,2,64,0,-1--1--1,|12||0-0-0,1|(619,196)|
+10,18,presupuesto NL,252,212,51,11,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+1,19,18,3,1,0,43,0,2,64,0,-1--1--1,|12||0-0-0,1|(177,207)|
+10,20,TEAM de desarrollo VN,621,60,48,19,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+1,21,7,20,1,0,43,0,2,64,0,-1--1--1,|12||0-0-0,1|(648,103)|
+1,22,20,6,1,0,43,0,2,64,0,-1--1--1,|12||0-0-0,1|(551,48)|
+10,23,ventas reales VN,276,272,56,11,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+10,24,Ganancia,412,303,32,11,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+1,25,12,24,0,0,45,0,2,64,0,-1--1--1,|12||0-0-0,1|(421,260)|
+1,26,23,24,0,0,43,0,2,64,0,-1--1--1,|12||0-0-0,1|(345,287)|
+1,27,24,16,0,0,43,0,2,64,0,-1--1--1,|12||0-0-0,1|(485,269)|
+12,28,0,248,116,45,11,8,7,0,0,-1,0,0,0,0,0,0,0,0,0
+Bucle positivo
+12,29,0,535,144,45,11,8,7,0,0,-1,0,0,0,0,0,0,0,0,0
+Bucle positivo
+///---\\\
+:L<%^E!@
+5:ventas reales VN
+9:Current
+19:130,0
+24:0
+25:0
+26:0
+23:0
+15:0,0,0,0,0,0
+27:0,
+34:0,
+42:1
+72:0
+73:0
+35:Date
+36:YYYY-MM-DD
+37:2000
+38:1
+39:1
+40:2
+41:0
+95:0
+96:0
+77:0
+78:0
+93:0
+94:0
+92:0
+91:0
+90:0
+87:0
+75:
+43:
